@@ -630,6 +630,14 @@ class RichTextEditor (KeepNoteEditor):
                        keepnote.PROGRAM_NAME)
 
 
+    def on_insert_image_from_path(self, imgfile):
+        """Insert an image by path"""
+        # do nothing if no page is selected
+        if self._page is None:
+            return
+        self.insert_image(imgfile, "screenshot.png")
+ 
+
     def on_insert_hr(self):
         """Insert horizontal rule into editor"""
         if self._page is None:

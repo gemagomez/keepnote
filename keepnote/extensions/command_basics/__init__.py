@@ -60,6 +60,9 @@ class Extension (keepnote.gui.extension.Extension):
 
             AppCommand("screenshot", self.on_screenshot,
                        help="insert a new screenshot"),
+            AppCommand("insert_image", self.on_insert_image,
+                       metavar="FILENAME",
+                       help="insert an image"),
             AppCommand("install", self.on_install_extension,
                        metavar="FILENAME",
                        help="install a new extension"),
@@ -177,6 +180,21 @@ class Extension (keepnote.gui.extension.Extension):
             if hasattr(editor, "on_screenshot"):
                 editor.on_screenshot()
         
+
+    def on_insert_image(self, app, args):
+        if len(args) < 1:
+           self.error("Must specify image path")
+           return
+
+        app.focus_windows()
+        window = self.app.get_current_window()
+        if window:
+            editor = window.get_viewer().get_editor()
+            if hasattr(editor, "get_editor"):
+                editor = editor.get_editor()
+            if hasattr(editor, "on_insert_image_from_path"):
+                editor.on_insert_image_from_path(args[1])
+
 
     def on_view_note(self, app, args):
 
