@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=KeepNote
+GenericName=Note-taking Application
+Icon=keepnote
+Exec=keepnote %f
+Categories=Office
+#MimeType=
+#Terminal=false
+#StartupNotify=false
